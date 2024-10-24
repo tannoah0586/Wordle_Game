@@ -11,8 +11,8 @@ As a user, I want to reset the game so that I can play again without refreshing 
 ## high level MVC scope + ## pseudoCode
 
 **Model:**
-store the target word --> random assigned from consts listOfWords
-store the current state of game --> guesses && number of attempt
+store the target word
+store the current state of game 
 
 **View:**
 Display the current state of the game to user
