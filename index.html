@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle Game</title>
+    <h1>Wordle Game</h1>
+    <h2 id="message">hello</h2>
+    <script defer src="./app.js"></script>
+</head>
+<body>
+    <div style="width: 200px; height: 232px; padding: 24px; background: white; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+        <div class="guesses" style="justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+          <div  style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+        </div>
+        <div class="guesses" style="justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+        </div>
+        <div class="guesses" style="justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+        </div>
+        <div class="guesses" style="justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+        </div>
+        <div class="guesses" style="justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+        </div>
+        <div class="guesses" style="justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+          <div style="width: 24px; height: 24px; position: relative; background: linear-gradient(180deg, #F0F0F0 0%, #C2C3C7 100%); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
+        </div>
+      </div>
+</body>
+</html>
