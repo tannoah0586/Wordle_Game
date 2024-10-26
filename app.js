@@ -5,7 +5,7 @@ const targetWord = 'hello';
 
 /*---------------------------- Variables (state) ----------------------------*/
     // let guesses = [];
-    let currentWord = ' ';
+    let currentWord = '';
     let winner = false; // not won yet
     let board = [
         '','','','','',
@@ -29,7 +29,7 @@ const handleClick =(event)=> {
         // Handle adding a letter to the current guess
         currentWord += event.key;
         for (let i = 0; i < currentWord.length; i++) {
-        board[i-1] = currentWord[i];
+        board[i] = currentWord[i];
         };
     }
     render();
