@@ -1,7 +1,7 @@
 ## user stories
 
 As a user, I want to start a new game so that I can play Wordle from the beginning.
-As a user, I want to input a word guess so that I can try to guess the word.
+As a user, I want to input a word so that I can try to guess the word.
 As a user, I want to see feedback on my guess so that I know which letters are correct and in the correct position, which are correct but in the wrong position, and which are incorrect.
 As a user, I want to see the number of remaining attempts so that I know how many guesses I have left.
 As a user, I want to see a message when I win or lose so that I know the outcome of the game.

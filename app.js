@@ -1,46 +1,69 @@
 /*-------------------------------- Constants --------------------------------*/
 const wordLength = 5;
-const maxAttempt = 6;
+const maxAttempt = 1;
 const targetWord = 'hello';
 
 /*---------------------------- Variables (state) ----------------------------*/
-    let guesses = [];
+    // let guesses = [];
     let currentWord = ' ';
     let winner = false; // not won yet
     let board = [
         '','','','','',
-        '','','','',''
     ]
 /*------------------------ Cached Element References ------------------------*/
 
 const guessEl = document.querySelectorAll('.guesses');
-    console.log(guessEl);
+    // console.log(guessEl);
 
-const messageEL = document.querySelector
+const messageEL = document.querySelector('#message');
+    // console.dir(messageEL);
 
 /*-------------------------------- Functions --------------------------------*/
 
-// function updateWord(word) {
-//     const boxes = document.querySelectorAll('.guesses');
-//     for (let i = 0; i < word.length; i++) {
-//       boxes[i].innerText = word[i];
-//     };
-// };
-
-const render = () => {
+const handleClick =(event)=> {
+    if (event.key === 'Enter') {
+        // Handle guess submission
+    } else if (event.key === 'Backspace') {
+        // Handle deleting the last character
+    } else if (event.key.length === 1 && event.key.match(/[a-z]/i)) {
+        // Handle adding a letter to the current guess
+        currentWord += event.key;
+        for (let i = 0; i < currentWord.length; i++) {
+        board[i-1] = currentWord[i];
+        };
+    }
+    render();
 };
 
 const updateBoard = () => {
-
+    board.forEach((element,index) => {
+        guessEl[index].innerText = element;
+        // console.log(guessEl[index]); 
+    });
 };
 
+const updateMessage = () => {
+    if(winner === true) {
+        messageEL.textContent = `You guess correctly!`;
+    };
+};
+
+const render = () => {
+    updateMessage();
+    updateBoard();
+};
+
+
+const init = () => {
+    render();
+    console.log('Initialization tasks are being performed.');
+};
+init();
+
+
 /*----------------------------- Event Listeners -----------------------------*/
-// guessEl.forEach(guesses => {
-//     guesses.addEventListener('keydown', function(event){
-//         const key = event.key;
-//         if (key.length === 1 && key.match(/[a-z]/i)) // and keypress single character and ensure only letters 
-//         currentWord += key;
-//         updateWord(currentWord);
-//     })
-// })
-// console.log(currentWord);
+guessEl.forEach(guess=> {
+    guess.addEventListener("keydown", function(event) {
+     handleClick(event);
+    });
+ })
