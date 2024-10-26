@@ -20,18 +20,22 @@ const messageEL = document.querySelector('#message');
 
 /*-------------------------------- Functions --------------------------------*/
 
-const handleClick =(event)=> {
+const handleClick = (event) => {
     if (event.key === 'Enter') {
         // Handle guess submission
     } else if (event.key === 'Backspace') {
-        // Handle deleting the last character
+        currentWord = currentWord.slice(0, -1);
+        console.log(currentWord);
     } else if (event.key.length === 1 && event.key.match(/[a-z]/i)) {
-        // Handle adding a letter to the current guess
         currentWord += event.key;
-        for (let i = 0; i < currentWord.length; i++) {
-        board[i] = currentWord[i];
-        };
     }
+    board = ['', '', '', '', '']; // need to clear the board array inorder to update the new currentWord.. currentWord will keep updating, need to isoloate the for loop
+
+    // Update the board array with currentWord
+    for (let i = 0; i < currentWord.length; i++) {
+        board[i] = currentWord[i];
+    }
+
     render();
 };
 
