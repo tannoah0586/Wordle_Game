@@ -48,7 +48,11 @@ use figma for CSS && wireframe
    guess is stored into array called guesses
 
 4. Handle currentGuesses
-   guess is compared to the targetWord and differences are displayed in red (letters not even in the targetWord) yellow in targetWord but wrong order
+      Loop through the words: Compare each character in currentWord with targetWord.
+      Check for exact matches: If characters match and are in the same position, mark them (e.g., change the div color to green).
+      Check for partial matches: If characters match but are in different positions, mark them differently (e.g., change the div color to yellow).
+      Update the board: Use your render function to update the board with the new colors.
+
 
 5. Compare the player choice to the computer choice, and check for a winner
    gameStatus is updated if maxAttempt is not met

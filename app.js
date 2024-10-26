@@ -22,10 +22,7 @@ const messageEL = document.querySelector('#message');
 
 const handleClick = (event) => {
     if (event.key === 'Enter') {
-        if(currentWord===targetWord) {
-            winner = true;
- 
-
+        handleEnterPress();
     } else if (event.key === 'Backspace') {
         currentWord = currentWord.slice(0, -1);
         console.log(currentWord);
@@ -39,10 +36,18 @@ const handleClick = (event) => {
     render();
 };
 
+const handleEnterPress = () => {
+    if(currentWord===targetWord) {
+        winner = true;
+    } else {
+
+    };
+};
+
+
 const updateBoard = () => {
     board.forEach((element,index) => {
         guessEl[index].innerText = element;
-        // console.log(guessEl[index]); 
     });
 };
 
@@ -62,7 +67,6 @@ const init = () => {
     console.log('Initialization tasks are being performed.');
 };
 init();
-
 
 /*----------------------------- Event Listeners -----------------------------*/
 guessEl.forEach(guess=> {
