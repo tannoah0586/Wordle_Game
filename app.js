@@ -22,20 +22,20 @@ const messageEL = document.querySelector('#message');
 
 const handleClick = (event) => {
     if (event.key === 'Enter') {
-        // Handle guess submission
+        if(currentWord===targetWord) {
+            winner = true;
+ 
+
     } else if (event.key === 'Backspace') {
         currentWord = currentWord.slice(0, -1);
         console.log(currentWord);
     } else if (event.key.length === 1 && event.key.match(/[a-z]/i)) {
         currentWord += event.key;
     }
-    board = ['', '', '', '', '']; // need to clear the board array inorder to update the new currentWord.. currentWord will keep updating, need to isoloate the for loop
-
-    // Update the board array with currentWord
-    for (let i = 0; i < currentWord.length; i++) {
+    board = ['', '', '', '', ''];                   // need to clear the board array inorder to update the new currentWord.
+    for (let i = 0; i < currentWord.length; i++) {  // Update the board array with 'new' currentWord
         board[i] = currentWord[i];
     }
-
     render();
 };
 
@@ -56,7 +56,6 @@ const render = () => {
     updateMessage();
     updateBoard();
 };
-
 
 const init = () => {
     render();
