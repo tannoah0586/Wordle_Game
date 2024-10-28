@@ -25,24 +25,34 @@ const handleClick = (event) => {
         handleEnterPress();
     } else if (event.key === 'Backspace') {
         currentWord = currentWord.slice(0, -1);
-        console.log(currentWord);
-    } else if (event.key.length === 1 && event.key.match(/[a-z]/i)) {
+        // console.log(currentWord);                                       //slice() works...
+    } else if (event.key.length === 1 && event.key.match(/[a-zA-Z]/)) { //https://stackoverflow.com/questions/38955573/how-to-check-keyboardevent-key-in-specific-range-in-javascript + https://stackoverflow.com/questions/12745930/javascript-regex-uppercase-and-lowercase-and-mixed
         currentWord += event.key;
     }
-    board = ['', '', '', '', ''];                   // need to clear the board array inorder to update the new currentWord.
-    for (let i = 0; i < currentWord.length; i++) {  // Update the board array with 'new' currentWord
+    board = ['', '', '', '', ''];                                       // need to clear the board array inorder to update the new currentWord.
+    for (let i = 0; i < currentWord.length; i++) {                      // Update the board array with 'new' currentWord
         board[i] = currentWord[i];
     }
     render();
 };
 
-const handleEnterPress = () => {
+const handleEnterPress = () => {                
     if(currentWord===targetWord) {
         winner = true;
     } else {
-
+        const getSameLetters = (targetWord,currentWord) => {
+            const minLength = Math.min(targetWord.length,currentWord.length);
+            const sameLetters = []
+            for (let i = 0; i < minLength; i++) {
+                if(targetWord[i] === currentWord[i]) {
+                    sameLetters.push({i,letter: targetWord[i]});  //https://stackoverflow.com/questions/70040227/how-do-you-check-two-strings-in-js-and-determine-if-any-letters-in-each-is-place
+                }
+            }
+            return sameLetters;
+        }
+        console.log(getSameLetters(targetWord,currentWord));
+        }
     };
-};
 
 
 const updateBoard = () => {

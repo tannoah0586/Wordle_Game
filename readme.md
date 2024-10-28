@@ -47,7 +47,7 @@ use figma for CSS && wireframe
    when player starts off by entering 5 letters and clicks enter button
    guess is stored into array called guesses
 
-4. Handle currentGuesses
+4. Handle handleEnterPress 
       Loop through the words: Compare each character in currentWord with targetWord.
       Check for exact matches: If characters match and are in the same position, mark them (e.g., change the div color to green).
       Check for partial matches: If characters match but are in different positions, mark them differently (e.g., change the div color to yellow).
