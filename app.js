@@ -13,7 +13,7 @@ const targetWord = 'hello';
 /*------------------------ Cached Element References ------------------------*/
 
 const guessEl = document.querySelectorAll('.guesses');
-    // console.log(guessEl);
+    // console.log(guessEl); 
 
 const messageEL = document.querySelector('#message');
     // console.dir(messageEL);
@@ -41,19 +41,26 @@ const handleEnterPress = () => {
         winner = true;
     } else {
         const getSameLetters = (targetWord,currentWord) => {
-            const minLength = Math.min(targetWord.length,currentWord.length);
             const sameLetters = []
-            for (let i = 0; i < minLength; i++) {
+            for (let i = 0; i < targetWord.length; i++) {
                 if(targetWord[i] === currentWord[i]) {
-                    sameLetters.push({i,letter: targetWord[i]});  //https://stackoverflow.com/questions/70040227/how-do-you-check-two-strings-in-js-and-determine-if-any-letters-in-each-is-place
+                    sameLetters.push(i);  //https://stackoverflow.com/questions/70040227/how-do-you-check-two-strings-in-js-and-determine-if-any-letters-in-each-is-place
                 }
             }
             return sameLetters;
         }
-        console.log(getSameLetters(targetWord,currentWord));
+        testing = getSameLetters(targetWord,currentWord);
+        for (let i = 0; i < guessEl.length; i++) {
+            if(testing.includes(i)) {
+                document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(144, 238, 144)';
+            }
+        }
         }
     };
 
+// const updateGeeen = () => {
+
+// };
 
 const updateBoard = () => {
     board.forEach((element,index) => {
@@ -70,6 +77,7 @@ const updateMessage = () => {
 const render = () => {
     updateMessage();
     updateBoard();
+    // updateGreen();
 };
 
 const init = () => {
