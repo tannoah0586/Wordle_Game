@@ -10,6 +10,9 @@ const targetWord = 'hello';
     let board = [
         '','','','','',
     ]
+
+    const sameCorrectLocation = [];
+    const sameButDifferentLocation = [];
 /*------------------------ Cached Element References ------------------------*/
 
 const guessEl = document.querySelectorAll('.guesses');
@@ -36,17 +39,17 @@ const handleClick = (event) => {
     render();
 };
 
-const handleEnterPress = () => {                
+const handleEnterPress = () => { 
+
+
    if (targetWord !== currentWord) {
         const getSameLetters = (targetWord,currentWord) => {
-            const sameCorrectLocation = []
-            const sameButDifferentLocation = []
             for (let i = 0; i < targetWord.length; i++) {
                 if(targetWord[i] === currentWord[i]) {
                     sameCorrectLocation.push(i);                            //https://stackoverflow.com/questions/70040227/how-do-you-check-two-strings-in-js-and-determine-if-any-letters-in-each-is-place
                 } else if (targetWord.includes(currentWord[i]) && targetWord[i] !== currentWord[i]) {
                     sameButDifferentLocation.push(i);
-                    // console.log(sameButDifferentLocation)            code works
+                    // console.log(sameButDifferentLocation)            //array is correct
                 }
             }
             return sameCorrectLocation;
@@ -62,7 +65,7 @@ const handleEnterPress = () => {
 
 const updateGeeen = () => {
     for (let i = 0; i < guessEl.length; i++) {
-        if(testing.includes(i)) {
+        if(sameCorrectLocation.includes(i)) {
             document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(144, 238, 144)';
         }
     } 
@@ -70,7 +73,7 @@ const updateGeeen = () => {
 
 const updateYellow = () => {
     for (let i = 0; i < guessEl.length; i++) {
-        if(testing.includes(i)) {
+        if(sameButDifferentLocation.includes(i)) {
             document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(255, 255, 0)';
         }
     } 
