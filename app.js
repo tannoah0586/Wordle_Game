@@ -37,30 +37,44 @@ const handleClick = (event) => {
 };
 
 const handleEnterPress = () => {                
-    if(currentWord===targetWord) {
-        winner = true;
-    } else {
+   if (targetWord !== currentWord) {
         const getSameLetters = (targetWord,currentWord) => {
-            const sameLetters = []
+            const sameCorrectLocation = []
+            const sameButDifferentLocation = []
             for (let i = 0; i < targetWord.length; i++) {
                 if(targetWord[i] === currentWord[i]) {
-                    sameLetters.push(i);  //https://stackoverflow.com/questions/70040227/how-do-you-check-two-strings-in-js-and-determine-if-any-letters-in-each-is-place
+                    sameCorrectLocation.push(i);                            //https://stackoverflow.com/questions/70040227/how-do-you-check-two-strings-in-js-and-determine-if-any-letters-in-each-is-place
+                } else if (targetWord.includes(currentWord[i]) && targetWord[i] !== currentWord[i]) {
+                    sameButDifferentLocation.push(i);
+                    // console.log(sameButDifferentLocation)            code works
                 }
             }
-            return sameLetters;
+            return sameCorrectLocation;
         }
+        
         testing = getSameLetters(targetWord,currentWord);
-        for (let i = 0; i < guessEl.length; i++) {
-            if(testing.includes(i)) {
-                document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(144, 238, 144)';
-            }
-        }
-        }
+            updateGeeen();
+            updateYellow();
+        } else {
+            winner = true;
     };
+};
 
-// const updateGeeen = () => {
+const updateGeeen = () => {
+    for (let i = 0; i < guessEl.length; i++) {
+        if(testing.includes(i)) {
+            document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(144, 238, 144)';
+        }
+    } 
+};
 
-// };
+const updateYellow = () => {
+    for (let i = 0; i < guessEl.length; i++) {
+        if(testing.includes(i)) {
+            document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(255, 255, 0)';
+        }
+    } 
+};
 
 const updateBoard = () => {
     board.forEach((element,index) => {
