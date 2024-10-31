@@ -2,7 +2,6 @@
 const wordLength = 5;
 const maxAttempt = 1;
 const targetWord = 'hello';
-
 /*---------------------------- Variables (state) ----------------------------*/
     // let guesses = [];
     let currentWord = '';
@@ -10,9 +9,8 @@ const targetWord = 'hello';
     let board = [
         '','','','','',
     ]
-
-    const sameCorrectLocation = [];
-    const sameButDifferentLocation = [];
+    // const sameCorrectLocation = [];                              removed globally and assigned as parameters in functions to avoid code smell
+    // const sameButDifferentLocation = [];                         removed globally and assigned as parameters in functions to avoid code smell
 /*------------------------ Cached Element References ------------------------*/
 
 const guessEl = document.querySelectorAll('.guesses');
@@ -40,8 +38,8 @@ const handleClick = (event) => {
 };
 
 const handleEnterPress = () => { 
-
-
+    const sameCorrectLocation = [];
+    const sameButDifferentLocation = [];
    if (targetWord !== currentWord) {
         const getSameLetters = (targetWord,currentWord) => {
             for (let i = 0; i < targetWord.length; i++) {
@@ -52,18 +50,17 @@ const handleEnterPress = () => {
                     // console.log(sameButDifferentLocation)            //array is correct
                 }
             }
-            return sameCorrectLocation;
+            return;
         }
-        
-        testing = getSameLetters(targetWord,currentWord);
-            updateGeeen();
-            updateYellow();
+            getSameLetters(targetWord,currentWord);         
+            updateGeeen(sameCorrectLocation);               //arrays are passed to the fuctions 
+            updateYellow(sameButDifferentLocation);         //arrays are passed to the fuctions 
         } else {
             winner = true;
     };
 };
 
-const updateGeeen = () => {
+const updateGeeen = (sameCorrectLocation) => {
     for (let i = 0; i < guessEl.length; i++) {
         if(sameCorrectLocation.includes(i)) {
             document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(144, 238, 144)';
@@ -71,7 +68,7 @@ const updateGeeen = () => {
     } 
 };
 
-const updateYellow = () => {
+const updateYellow = (sameButDifferentLocation) => {
     for (let i = 0; i < guessEl.length; i++) {
         if(sameButDifferentLocation.includes(i)) {
             document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(255, 255, 0)';
@@ -100,6 +97,8 @@ const render = () => {
 const init = () => {
     render();
     console.log('Initialization tasks are being performed.');
+    sameButDifferentLocation =[];
+    sameCorrectLocation =[];
 };
 init();
 
