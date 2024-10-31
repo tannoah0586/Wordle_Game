@@ -48,10 +48,11 @@ use figma for CSS && wireframe
    guess is stored into array called guesses
 
 4. Handle handleEnterPress 
-      Loop through the words: Compare each character in currentWord with targetWord.
-      Check for exact matches: If characters match and are in the same position, mark them (e.g., change the div color to green).
-      Check for partial matches: If characters match but are in different positions, mark them differently (e.g., change the div color to yellow).
-      Update the board: Use your render function to update the board with the new colors.
+      Loop through the words: Compare each character in currentWord with targetWord.  (done)
+      Check for exact matches: If characters match and are in the same position, mark them (e.g., change the div color to green). (done)
+      Check for partial matches: If characters match but are in different positions, mark them differently (e.g., change the div color to yellow). (done)
+      Update the board: Use your render function to update the board with the new colors. (done)
+      when enter keydown is activated, row 1 is locked and player focuses on row 2, game repeats 
 
 
 5. Compare the player choice to the computer choice, and check for a winner
@@ -59,3 +60,4 @@ use figma for CSS && wireframe
 
 6. Render a win/lose/tie message to the player
    gamneStatus will show either win lose (if max Attempt is hit and currentGuess !== targetWord)
+   

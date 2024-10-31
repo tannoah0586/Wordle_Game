@@ -1,6 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
 const wordLength = 5;
-const maxAttempt = 1;
+const maxAttempt = 2;
 const targetWord = 'hello';
 /*---------------------------- Variables (state) ----------------------------*/
     // let guesses = [];
@@ -8,9 +8,8 @@ const targetWord = 'hello';
     let winner = false; // not won yet
     let board = [
         '','','','','',
-    ]
-    // const sameCorrectLocation = [];                              removed globally and assigned as parameters in functions to avoid code smell
-    // const sameButDifferentLocation = [];                         removed globally and assigned as parameters in functions to avoid code smell
+        '','','','','',
+    ];
 /*------------------------ Cached Element References ------------------------*/
 
 const guessEl = document.querySelectorAll('.guesses');
@@ -23,14 +22,19 @@ const messageEL = document.querySelector('#message');
 
 const handleClick = (event) => {
     if (event.key === 'Enter') {
-        handleEnterPress();
+        handleEnterPress();  
+        isEnterPressed = true;                                           //important Enter keydown function...
     } else if (event.key === 'Backspace') {
-        currentWord = currentWord.slice(0, -1);
-        // console.log(currentWord);                                       //slice() works...
+        if (!isEnterPressed) {                                           //locks in currentWord and prevents backspace() once 5 letters and enter is pressed
+            handleBackspacePress();  
+        }                                       //slice() works...
     } else if (event.key.length === 1 && event.key.match(/[a-zA-Z]/)) { //https://stackoverflow.com/questions/38955573/how-to-check-keyboardevent-key-in-specific-range-in-javascript + https://stackoverflow.com/questions/12745930/javascript-regex-uppercase-and-lowercase-and-mixed
         currentWord += event.key;
     }
-    board = ['', '', '', '', ''];                                       // need to clear the board array inorder to update the new currentWord.
+    board = [                                                              // need to clear the board array inorder to update the new currentWord.
+        '', '', '', '', '',
+        '', '', '', '', '',
+    ];                                       
     for (let i = 0; i < currentWord.length; i++) {                      // Update the board array with 'new' currentWord
         board[i] = currentWord[i];
     }
@@ -38,27 +42,32 @@ const handleClick = (event) => {
 };
 
 const handleEnterPress = () => { 
-    const sameCorrectLocation = [];
-    const sameButDifferentLocation = [];
-   if (targetWord !== currentWord) {
-        const getSameLetters = (targetWord,currentWord) => {
-            for (let i = 0; i < targetWord.length; i++) {
-                if(targetWord[i] === currentWord[i]) {
-                    sameCorrectLocation.push(i);                            //https://stackoverflow.com/questions/70040227/how-do-you-check-two-strings-in-js-and-determine-if-any-letters-in-each-is-place
-                } else if (targetWord.includes(currentWord[i]) && targetWord[i] !== currentWord[i]) {
-                    sameButDifferentLocation.push(i);
-                    // console.log(sameButDifferentLocation)            //array is correct
+    if(currentWord.length === 5) {
+        if (targetWord !== currentWord) {
+                getSameLetters(targetWord,currentWord);                 //compare target and current word function
+                updateGeeen(sameCorrectLocation);                       //arrays are passed to the fuctions to avoid using global arrays which contributes to code smell
+                updateYellow(sameButDifferentLocation);                 //arrays are passed to the fuctions to avoid using global arrays which contributes to code smell                         
+            } else {
+                winner = true;
                 }
-            }
-            return;
-        }
-            getSameLetters(targetWord,currentWord);         
-            updateGeeen(sameCorrectLocation);               //arrays are passed to the fuctions 
-            updateYellow(sameButDifferentLocation);         //arrays are passed to the fuctions 
-        } else {
-            winner = true;
-    };
+    }; 
 };
+
+const handleBackspacePress = () => {
+    currentWord = currentWord.slice(0, -1);
+}
+
+const getSameLetters = (targetWord,currentWord) => {
+    for (let i = 0; i < targetWord.length; i++) {
+        if(targetWord[i] === currentWord[i]) {
+            sameCorrectLocation.push(i);                            //https://stackoverflow.com/questions/70040227/how-do-you-check-two-strings-in-js-and-determine-if-any-letters-in-each-is-place
+        } else if (targetWord.includes(currentWord[i]) && targetWord[i] !== currentWord[i]) {
+            sameButDifferentLocation.push(i);
+            // console.log(sameButDifferentLocation)            //array is correct
+        }
+    }
+    return;
+}
 
 const updateGeeen = (sameCorrectLocation) => {
     for (let i = 0; i < guessEl.length; i++) {
@@ -99,6 +108,7 @@ const init = () => {
     console.log('Initialization tasks are being performed.');
     sameButDifferentLocation =[];
     sameCorrectLocation =[];
+    isEnterPressed = false;   
 };
 init();
 
