@@ -14,7 +14,7 @@ const targetWord = 'hello';
 /*------------------------ Cached Element References ------------------------*/
 
 const guessEl = document.querySelectorAll('.guesses');
-    // console.log(guessEl); 
+    // console.dir(guessEl); 
 
 const messageEL = document.querySelector('#message');
     // console.dir(messageEL);
@@ -89,11 +89,13 @@ const updateYellow = (sameButDifferentLocation) => {
 };
 
 const updateBoard = () => {
-    startingIndex = rowNumber*5;
+    startingIndex = rowNumber * 5;
     board.forEach((element,index) => {
-        guessEl[index].innerText = element;
+        
+        if(index + startingIndex < guessEl.length) {
+            guessEl[index+startingIndex].innerText = element;
+        };
     });
-    console.log(startingIndex)
 };
 
 const updateMessage = () => {
@@ -114,7 +116,6 @@ const init = () => {
     sameButDifferentLocation =[];
     sameCorrectLocation =[];
     isEnterPressed = false;   
- 
 };
 init();
 
