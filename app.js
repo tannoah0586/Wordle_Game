@@ -10,6 +10,7 @@ const targetWord = 'hello';
         '','','','','',
         '','','','','',
     ];
+    let rowNumber = 0;
 /*------------------------ Cached Element References ------------------------*/
 
 const guessEl = document.querySelectorAll('.guesses');
@@ -27,14 +28,14 @@ const handleClick = (event) => {
     } else if (event.key === 'Backspace') {
         if (!isEnterPressed) {                                           //locks in currentWord and prevents backspace() once 5 letters and enter is pressed
             handleBackspacePress();  
-        }                                       //slice() works...
+        }                                       
     } else if (event.key.length === 1 && event.key.match(/[a-zA-Z]/)) { //https://stackoverflow.com/questions/38955573/how-to-check-keyboardevent-key-in-specific-range-in-javascript + https://stackoverflow.com/questions/12745930/javascript-regex-uppercase-and-lowercase-and-mixed
         currentWord += event.key;
     }
     board = [                                                              // need to clear the board array inorder to update the new currentWord.
         '', '', '', '', '',
         '', '', '', '', '',
-    ];                                       
+    ];                                  
     for (let i = 0; i < currentWord.length; i++) {                      // Update the board array with 'new' currentWord
         board[i] = currentWord[i];
     }
@@ -46,7 +47,9 @@ const handleEnterPress = () => {
         if (targetWord !== currentWord) {
                 getSameLetters(targetWord,currentWord);                 //compare target and current word function
                 updateGeeen(sameCorrectLocation);                       //arrays are passed to the fuctions to avoid using global arrays which contributes to code smell
-                updateYellow(sameButDifferentLocation);                 //arrays are passed to the fuctions to avoid using global arrays which contributes to code smell                         
+                updateYellow(sameButDifferentLocation);                 //arrays are passed to the fuctions to avoid using global arrays which contributes to code smell  
+                rowNumber +=1;              
+                currentWord = '';     
             } else {
                 winner = true;
                 }
@@ -54,7 +57,7 @@ const handleEnterPress = () => {
 };
 
 const handleBackspacePress = () => {
-    currentWord = currentWord.slice(0, -1);
+    currentWord = currentWord.slice(0, -1);                             //slice() works...
 }
 
 const getSameLetters = (targetWord,currentWord) => {
@@ -72,7 +75,7 @@ const getSameLetters = (targetWord,currentWord) => {
 const updateGeeen = (sameCorrectLocation) => {
     for (let i = 0; i < guessEl.length; i++) {
         if(sameCorrectLocation.includes(i)) {
-            document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(144, 238, 144)';
+            document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(144, 238, 144)';  
         }
     } 
 };
@@ -80,15 +83,17 @@ const updateGeeen = (sameCorrectLocation) => {
 const updateYellow = (sameButDifferentLocation) => {
     for (let i = 0; i < guessEl.length; i++) {
         if(sameButDifferentLocation.includes(i)) {
-            document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(255, 255, 0)';
+            document.getElementById(guessEl[i].id).style.backgroundColor = 'rgb(255, 255, 0)'; 
         }
     } 
 };
 
 const updateBoard = () => {
+    startingIndex = rowNumber*5;
     board.forEach((element,index) => {
         guessEl[index].innerText = element;
     });
+    console.log(startingIndex)
 };
 
 const updateMessage = () => {
@@ -109,6 +114,7 @@ const init = () => {
     sameButDifferentLocation =[];
     sameCorrectLocation =[];
     isEnterPressed = false;   
+ 
 };
 init();
 
