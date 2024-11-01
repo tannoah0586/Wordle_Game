@@ -9,6 +9,10 @@ const targetWord = 'hello';
     let board = [
         '','','','','',
         '','','','','',
+        '','','','','',
+        '','','','','',
+        '','','','','',
+        '','','','','',
     ];
     let rowNumber = 0;
 /*------------------------ Cached Element References ------------------------*/
@@ -32,10 +36,7 @@ const handleClick = (event) => {
     } else if (event.key.length === 1 && event.key.match(/[a-zA-Z]/)) { //https://stackoverflow.com/questions/38955573/how-to-check-keyboardevent-key-in-specific-range-in-javascript + https://stackoverflow.com/questions/12745930/javascript-regex-uppercase-and-lowercase-and-mixed
         currentWord += event.key;
     }
-    // board = [                                                              // need to clear the board array inorder to update the new currentWord.
-    //     '', '', '', '', '',
-    //     '', '', '', '', '',
-    // ];                     
+
     if (currentWord.length > 0) {
         startingIndex = rowNumber * 5;
         for (let i = 0; i < currentWord.length; i++) {                      // Update the board array with 'new' currentWord
@@ -43,8 +44,6 @@ const handleClick = (event) => {
         };
         console.log(board)
     };
-
-
     // console.log(`current word length: ${currentWord.length}`)
     // console.log(`starting index: ${startingIndex}`)
     render();
