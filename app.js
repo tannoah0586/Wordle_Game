@@ -1,7 +1,13 @@
 /*-------------------------------- Constants --------------------------------*/
 const wordLength = 5;
 const maxAttempt = 6;
-const targetWord = 'hello';
+const targetArray = ['kiasu','bojio','makan','aiyah','shiok'];
+const getRandomInt = (max) => {
+    return Math.floor(Math.random() * max);                                //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+};
+const targetWord = targetArray[getRandomInt(targetArray.length)];
+console.log(targetWord);                                                    //random word generator works
+
 /*---------------------------- Variables (state) ----------------------------*/
     // let guesses = [];
     let currentWord = '';
@@ -25,6 +31,7 @@ const messageEL = document.querySelector('#message');
     // console.dir(messageEL);
 
 /*-------------------------------- Functions --------------------------------*/
+
 
 const handleClick = (event) => {
     if (event.key === 'Enter') {
@@ -80,7 +87,7 @@ const getSameLetters = (targetWord,currentWord) => {                            
             sameButDifferentLocation.push(i + startingIndex);
         }
     }
-    console.log(`correct letter but different location: ${sameButDifferentLocation}`);                               //array push is buggy...
+    console.log(`correct letter but different location: ${sameButDifferentLocation}`);                               //array is okay 
     console.log(`correct letter correct location: ${sameCorrectLocation}`);                                          //array is okay 
 }
 
@@ -113,7 +120,7 @@ const updateBoard = () => {
 
 const updateMessage = () => {
     if(winner === true) {
-        messageEL.textContent = `You guess the word correctly!`;
+        messageEL.textContent = `You guess the SINGLISH word correctly!`;
     };
     if (attepmt === maxAttempt && winner === false) {
         messageEL.textContent = 'You lose, try harder next time!'
