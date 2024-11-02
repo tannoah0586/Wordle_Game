@@ -1,7 +1,7 @@
 /*-------------------------------- Constants --------------------------------*/
 const wordLength = 5;
 const maxAttempt = 2;
-const targetWord = 'hello';
+const targetWord = 'oklah';
 /*---------------------------- Variables (state) ----------------------------*/
     // let guesses = [];
     let currentWord = '';
@@ -30,19 +30,18 @@ const handleClick = (event) => {
         handleEnterPress();  
         isEnterPressed = true;                                           //important Enter keydown function...
     } else if (event.key === 'Backspace') {
-        if (!isEnterPressed && rowNumber === 0) {                        //locks in currentWord and prevents backspace() once 5 letters and enter is pressed
+        // if (!isEnterPressed && rowNumber !== 0) {                        //locks in currentWord and prevents backspace() once 5 letters and enter is pressed
             handleBackspacePress();  
-        }                                       
+        // }                                       
     } else if (event.key.length === 1 && event.key.match(/[a-zA-Z]/)) { //https://stackoverflow.com/questions/38955573/how-to-check-keyboardevent-key-in-specific-range-in-javascript + https://stackoverflow.com/questions/12745930/javascript-regex-uppercase-and-lowercase-and-mixed
         currentWord += event.key;
     }
-
     if (currentWord.length > 0) {
         startingIndex = rowNumber * 5;
         for (let i = 0; i < currentWord.length; i++) {                      // Update the board array with 'new' currentWord
             board[i+startingIndex] = currentWord[i];
         };
-        console.log(board)
+        // console.log(board)
     };
     // console.log(`current word length: ${currentWord.length}`)
     // console.log(`starting index: ${startingIndex}`)
@@ -66,18 +65,20 @@ const handleEnterPress = () => {
 
 const handleBackspacePress = () => {
     currentWord = currentWord.slice(0, -1);                             //slice() works...
-    const startingIndex = rowNumber *5;
-    board[startingIndex+currentWord.length] = '';
+    const startingIndex = rowNumber * 5;
+    board[startingIndex + currentWord.length] = '';
 }
 
-const getSameLetters = (targetWord,currentWord) => {
-    for (let i = 0; i < targetWord.length; i++) {
-        if(targetWord[i] === currentWord[i]) {
-            sameCorrectLocation.push(i);                            //https://stackoverflow.com/questions/70040227/how-do-you-check-two-strings-in-js-and-determine-if-any-letters-in-each-is-place
-        } else if (targetWord.includes(currentWord[i]) && targetWord[i] !== currentWord[i]) {
-            sameButDifferentLocation.push(i);
-            // console.log(sameButDifferentLocation)            //array is correct
+const getSameLetters = (targetWord,currentWord) => {                        //aim for this function is to build the 2 arrays to update board
+    const startingIndex = rowNumber * 5;  
+    for (let i = 0; i < targetWord.length; i++) {                           //testing if board.length should be the correct array as targetword.length is only 5 letters long... so it runs out of space fast
+        if(targetWord[i] === currentWord[i+startingIndex]) {
+            sameCorrectLocation.push(i+startingIndex);                            //https://stackoverflow.com/questions/70040227/how-do-you-check-two-strings-in-js-and-determine-if-any-letters-in-each-is-place
+        } else if (targetWord.includes(currentWord[i+startingIndex]) && targetWord[i] !== currentWord[i+startingIndex]) {
+            sameButDifferentLocation.push(i+startingIndex);
         }
+        console.log(`correct letter but different location: ${sameButDifferentLocation}`);                             //array is correct but buggy... as it accounts for only 5 elements
+        console.log(`correct letter correct location: ${sameCorrectLocation}`);                                  //array is correct but buggy... as it accounts for only 5 elements
     }
     return;
 }
