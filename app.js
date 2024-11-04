@@ -163,7 +163,7 @@ const updateBoard = () => {
 
 const updateMessage = () => {
   if (winner === true) {
-    messageEL.textContent = `You guess the SINGLISH word correctly!`;
+    messageEL.textContent = `Wah lau eh, you win liao lor!`;
   }
   if (attepmt === maxAttempt && winner === false) {
     messageEL.textContent = "You lose, use your brain lah!";

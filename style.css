@@ -24,9 +24,15 @@
 }
 
 h1, h4 {
-  color: #00264D; /* Dark Blue text */
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
   text-align: center;
 }
 
+h1 {
+  color: #00264D; /* Dark Blue */
+}
+
+h4 {
+  color: #D81B60; /* Red */
+}
