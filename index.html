@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel ="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SINGLISH Wordle Game</title>
+    <title>SINGLISHWordle Game</title>
     <h1>SINGLISH Wordle Game</h1>
     <h4 id="message" >
       <ul>
@@ -16,7 +17,8 @@
     <script defer src="app.js"></script>
 </head>
 <body>
-    <div class="board" style="width: 200px; height: 232px; padding: 24px; background: white; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+  <div class="container">
+    <div class="board" style="width: 175px; height: 220px; padding: 24px; background: white; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
         <div id="row0" style="justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex"> 
           <div class="guesses" id="0" tabindex="0" style="width: 24px; height: 24px; position: relative; background-color:rgb(194, 195, 199); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
           <div class="guesses" id="1" tabindex="0" style="width: 24px; height: 24px; position: relative; background-color:rgb(194, 195, 199); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
@@ -60,5 +62,6 @@
           <div class="guesses" id="29" tabindex="0" style="width: 24px; height: 24px; position: relative; background-color:rgb(194, 195, 199); border-radius: 4px; border: 2px #C2C3C7 solid"></div>
         </div>
       </div>
+    </div>
 </body>
 </html>

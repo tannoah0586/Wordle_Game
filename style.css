@@ -1,8 +1,32 @@
+.container {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100vh; /* To fill the entire viewport height */
+}
+
+.board {
+  /* ... other styles ... */
+  border: 2px solid #00264D; /* Dark Blue border */
+  background-color: #FFF; /* White background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px; /* Adjust the margin as needed */
+}
+
+
 .guesses {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 232px;
-  }
+  /* ... other styles ... */
+  border: 2px solid #00264D; /* Dark Blue border */
+  background-color: #FFF; /* White background */
+}
+
+h1, h4 {
+  color: #00264D; /* Dark Blue text */
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
