@@ -64,21 +64,24 @@ const handleClick = (event) => {
     // if (!isEnterPressed && rowNumber !== 0) {                        //locks in currentWord and prevents backspace() once 5 letters and enter is pressed
     handleBackspacePress();
     // }
-  } else if (event.key.length === 1 && event.key.match(/[a-z]/)) {
-    //https://stackoverflow.com/questions/38955573/how-to-check-keyboardevent-key-in-specific-range-in-javascript + https://stackoverflow.com/questions/12745930/javascript-regex-uppercase-and-lowercase-and-mixed
+  } else if (event.key.length === 1 && event.key.match(/[a-z]/)) { //https://stackoverflow.com/questions/38955573/how-to-check-keyboardevent-key-in-specific-range-in-javascript + https://stackoverflow.com/questions/12745930/javascript-regex-uppercase-and-lowercase-and-mixed
     currentWord += event.key;
   }
-  if (currentWord.length > 0) {
-    startingIndex = rowNumber * 5;
+  if (currentWord.length > 0) 
+    displayBoard();
+    render();
+};
+
+const displayBoard=() =>{
+     startingIndex = rowNumber * 5;
     for (let i = 0; i < currentWord.length; i++) {              // Update the board array with 'new' currentWord
       board[i + startingIndex] = currentWord[i];
     }
     // console.log(board)
-  }
+  };
+
   // console.log(`current word length: ${currentWord.length}`)
   // console.log(`starting index: ${startingIndex}`)
-  render();
-};
 
 const handleEnterPress = () => {
   if (currentWord.length === 5) {
