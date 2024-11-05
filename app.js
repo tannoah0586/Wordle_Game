@@ -101,7 +101,9 @@ const handleEnterPress = () => {
 
 const handleBackspacePress = () => {
   currentWord = currentWord.slice(0, -1); //slice() works...
-  board[currentWord.length] = "";
+  const startingIndex = rowNumber * 5;                  // necesaary to account for the entire board array
+  board[startingIndex + currentWord.length] = "";       //updates the board to 'delete' last wordlength
+  console.log(startingIndex + currentWord.length)       //checking logic.... works..
 };
 
 const getSameLetters = (targetWord, currentWord) => {
