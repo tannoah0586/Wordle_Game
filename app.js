@@ -73,7 +73,7 @@ const handleClick = (event) => {
     // if (!isEnterPressed && rowNumber !== 0) {                        //locks in currentWord and prevents backspace() once 5 letters and enter is pressed
     handleBackspacePress();
     // }
-  } else if (event.key.length === 1 && event.key.match(/[a-zA-Z]/)) {
+  } else if (event.key.length === 1 && event.key.match(/[a-z]/)) {
     //https://stackoverflow.com/questions/38955573/how-to-check-keyboardevent-key-in-specific-range-in-javascript + https://stackoverflow.com/questions/12745930/javascript-regex-uppercase-and-lowercase-and-mixed
     currentWord += event.key;
   }
