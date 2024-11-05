@@ -101,8 +101,7 @@ const handleEnterPress = () => {
 
 const handleBackspacePress = () => {
   currentWord = currentWord.slice(0, -1); //slice() works...
-  const startingIndex = rowNumber * 5;
-  board[startingIndex + currentWord.length] = "";
+  board[currentWord.length] = "";
 };
 
 const getSameLetters = (targetWord, currentWord) => {
