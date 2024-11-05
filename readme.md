@@ -1,3 +1,13 @@
+## Screenshot/Logo 
+![alt text](image.png)
+
+
+
+
+
+
+
+
 ## user stories
 
 As a user, I want to start a new game so that I can play Wordle from the beginning.
@@ -60,4 +70,4 @@ use figma for CSS && wireframe
 
 6. Render a win/lose/tie message to the player
    gamneStatus will show either win lose (if max Attempt is hit and currentGuess !== targetWord)
-   
+
