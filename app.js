@@ -2,15 +2,6 @@
 const wordLength = 5;
 const maxAttempt = 6;
 const targetArray = ["kiasu", "bojio", "makan", "aiyah", "shiok","aiyoh", "boleh","cheem", "chope", "lepak", "dabao"];
-// fetch('wordList.txt')                                                // used AI to help me find a way to reference a list of words from a .txt file. not successful
-// .then(response => response.text())
-// .then(data => {
-//   const wordList = data.split('\n');
-//   const getRandomInt = (max) => Math.floor(Math.random() * max);
-//   const targetWord = wordList[getRandomInt(wordList.length)];
-//   console.log(targetWord); // This will log a random word from the list
-// });
-
 const getRandomInt = (max) => {
   return Math.floor(Math.random() * max); //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 };
@@ -79,8 +70,7 @@ const handleClick = (event) => {
   }
   if (currentWord.length > 0) {
     startingIndex = rowNumber * 5;
-    for (let i = 0; i < currentWord.length; i++) {
-      // Update the board array with 'new' currentWord
+    for (let i = 0; i < currentWord.length; i++) {              // Update the board array with 'new' currentWord
       board[i + startingIndex] = currentWord[i];
     }
     // console.log(board)
@@ -116,10 +106,10 @@ const getSameLetters = (targetWord, currentWord) => {
   //this function is to build the 2 arrays to update board with color codes
   const startingIndex = rowNumber * 5;
   for (let i = 0; i < targetWord.length; i++) {
-    if (targetWord[i] === currentWord[i]) {
+    if (targetWord[i] === currentWord[i]) {             //conditions for green color
       sameCorrectLocation.push(i + startingIndex); //https://stackoverflow.com/questions/70040227/how-do-you-check-two-strings-in-js-and-determine-if-any-letters-in-each-is-place
     } else if (
-      targetWord.includes(currentWord[i]) &&
+      targetWord.includes(currentWord[i]) &&            //conditions for yellow color 
       targetWord[i] !== currentWord[i]
     ) {
       sameButDifferentLocation.push(i + startingIndex);
@@ -132,7 +122,6 @@ const getSameLetters = (targetWord, currentWord) => {
 };
 
 const updateGeeen = (sameCorrectLocation) => {
-  const startingIndex = rowNumber * 5;
   for (let i = 0; i < guessEl.length; i++) {
     if (sameCorrectLocation.includes(i)) {
       document.getElementById(guessEl[i].id).style.backgroundColor =
@@ -142,7 +131,6 @@ const updateGeeen = (sameCorrectLocation) => {
 };
 
 const updateYellow = (sameButDifferentLocation) => {
-  const startingIndex = rowNumber * 5;
   for (let i = 0; i < guessEl.length; i++) {
     if (sameButDifferentLocation.includes(i)) {
       document.getElementById(guessEl[i].id).style.backgroundColor =
@@ -152,7 +140,6 @@ const updateYellow = (sameButDifferentLocation) => {
 };
 
 const updateBoard = () => {
-  startingIndex = rowNumber * 5;
   board.forEach((element, index) => {
     if (index < guessEl.length) {
       //restriction condition to prevent undefined guessEl.innertext
@@ -176,10 +163,9 @@ const render = () => {
 };
 
 const init = () => {
-  render();
   console.log("Initialization tasks are being performed.");
-  sameButDifferentLocation = []; //testing
-  sameCorrectLocation = [];
+  sameButDifferentLocation = []; //global array
+  sameCorrectLocation = [];     //global array
   isEnterPressed = false;
 };
 init();
