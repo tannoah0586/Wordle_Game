@@ -59,7 +59,6 @@ const messageEL = document.querySelector("#message");
 const handleClick = (event) => {
   if (event.key === "Enter") {
     handleEnterPress();
-    isEnterPressed = true; //important Enter keydown function...
   } else if (event.key === "Backspace") {
     // if (!isEnterPressed && rowNumber !== 0) {                        //locks in currentWord and prevents backspace() once 5 letters and enter is pressed
     handleBackspacePress();
@@ -103,7 +102,7 @@ const handleBackspacePress = () => {
   currentWord = currentWord.slice(0, -1); //slice() works...
   const startingIndex = rowNumber * 5;                  // necesaary to account for the entire board array
   board[startingIndex + currentWord.length] = "";       //updates the board to 'delete' last wordlength
-  console.log(startingIndex + currentWord.length)       //checking logic.... works..
+//   console.log(startingIndex + currentWord.length)       //checking logic.... works..
 };
 
 const getSameLetters = (targetWord, currentWord) => {
@@ -170,7 +169,6 @@ const init = () => {
   console.log("Initialization tasks are being performed.");
   sameButDifferentLocation = []; //global array
   sameCorrectLocation = [];     //global array
-  isEnterPressed = false;
 };
 init();
 

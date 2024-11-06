@@ -3,11 +3,6 @@
 
 
 
-
-
-
-
-
 ## user stories
 
 As a user, I want to start a new game so that I can play Wordle from the beginning.
