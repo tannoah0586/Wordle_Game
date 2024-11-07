@@ -59,6 +59,15 @@ const displayBoard=() =>{
   // console.log(`current word length: ${currentWord.length}`)
   // console.log(`starting index: ${startingIndex}`)
 
+  const updateBoard = () => {                                             //maps elements from board array to html elements in guessEL (reflects changes in board array in the UI elements)
+    board.forEach((element, index) => {
+      if (index < guessEl.length) {
+        //restriction condition to prevent undefined guessEl.innertext
+        guessEl[index].innerText = element;
+      }
+    });
+  };
+
 const handleEnterPress = () => {
   if (currentWord.length === 5) {
     if (targetWord !== currentWord) {
@@ -82,8 +91,7 @@ const handleBackspacePress = () => {
 //   console.log(startingIndex + currentWord.length)       //checking logic.... works..
 };
 
-const getSameLetters = (targetWord, currentWord) => {
-  //this function is to build the 2 arrays to update board with color codes
+const getSameLetters = (targetWord, currentWord) => {           //this function is to build the 2 arrays to update board with color codes
   const startingIndex = rowNumber * 5;
   for (let i = 0; i < targetWord.length; i++) {
     if (targetWord[i] === currentWord[i]) {             //conditions for green color
@@ -115,15 +123,6 @@ const updateYellow = (sameButDifferentLocation) => {
       document.getElementById(guessEl[i].id).style.backgroundColor = "rgb(255, 255, 0)";
     }
   }
-};
-
-const updateBoard = () => {                                             //maps elements from board array to html elements in guessEL (reflects changes in board array in the UI elements)
-  board.forEach((element, index) => {
-    if (index < guessEl.length) {
-      //restriction condition to prevent undefined guessEl.innertext
-      guessEl[index].innerText = element;
-    }
-  });
 };
 
 const updateMessage = () => {
