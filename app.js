@@ -1,9 +1,10 @@
+// console.time('label')
 /*-------------------------------- Constants --------------------------------*/
 const wordLength = 5;
 const maxAttempt = 6;
 const targetArray = ["kiasu", "bojio", "makan", "aiyah", "shiok","aiyoh", "boleh","cheem", "chope", "lepak", "dabao"];
 const getRandomInt = (max) => {
-  return Math.floor(Math.random() * max); //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+  return Math.floor(Math.random() * max);    
 };
 const targetWord = targetArray[getRandomInt(targetArray.length)];
 console.log(targetWord); //random word generator works
@@ -13,36 +14,12 @@ console.log(targetWord); //random word generator works
 let currentWord = "";
 let winner = false; // not won yet
 let board = [
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
-  "",
+  "","","","","",
+  "","","","","",
+  "","","","","",
+  "","","","","",
+  "","","","","",
+  "","","","","",
 ];
 let rowNumber = 0;
 let attepmt = 0;
@@ -178,3 +155,5 @@ guessEl.forEach((guess) => {
     handleClick(event);
   });
 });
+
+// console.timeEnd('label');
