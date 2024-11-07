@@ -90,6 +90,6 @@ Next steps:
 1) user cannot re enter incorrect guess
 2) user cannot enter a non dictionary word - read up online that a list of dictionary words can be loaded onto a .txt file but i have not tried it
 3) create a form and allow user to choose difficulty level e.g. length of words + number of guesses --> game will that that input and change accordinly so const wordLength = 5; and const maxAttempt = 6; will be varaibles instread of constants
-4) explore how to make my code more efficient..
+4) explore how to test and make my code more efficient..
    console.time and console.timeEnd 
    time complexity Big O notation --> from AI it states thst my code is const getSameLetters () has a big O of ( O(n^2) ) and the runtime of my function will grow quadratically as targetWord increases.
