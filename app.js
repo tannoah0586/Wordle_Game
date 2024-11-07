@@ -4,7 +4,7 @@ const wordLength = 5;
 const maxAttempt = 6;
 const targetArray = ["kiasu", "bojio", "makan", "aiyah", "shiok","aiyoh", "boleh","cheem", "chope", "lepak", "dabao"];
 const getRandomInt = (max) => {
-  return Math.floor(Math.random() * max);    
+  return Math.floor(Math.random() * max);   //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 };
 const targetWord = targetArray[getRandomInt(targetArray.length)];
 console.log(targetWord); //random word generator works
@@ -63,8 +63,8 @@ const handleEnterPress = () => {
   if (currentWord.length === 5) {
     if (targetWord !== currentWord) {
       getSameLetters(targetWord, currentWord); //compare target and current word function
-      updateGeeen(sameCorrectLocation); //arrays are passed to the fuctions to avoid using global arrays which contributes to code smell
-      updateYellow(sameButDifferentLocation); //arrays are passed to the fuctions to avoid using global arrays which contributes to code smell
+      updateGeeen(sameCorrectLocation); //arrays are passed to the fuctions 
+      updateYellow(sameButDifferentLocation); //arrays are passed to the fuctions 
       rowNumber += 1;
       attepmt += 1;
       currentWord = ""; //resets currentWord for new row
@@ -104,8 +104,7 @@ const getSameLetters = (targetWord, currentWord) => {
 const updateGeeen = (sameCorrectLocation) => {
   for (let i = 0; i < guessEl.length; i++) {
     if (sameCorrectLocation.includes(i)) {
-      document.getElementById(guessEl[i].id).style.backgroundColor =
-        "rgb(144, 238, 144)";
+      document.getElementById(guessEl[i].id).style.backgroundColor = "rgb(144, 238, 144)";
     }
   }
 };
@@ -113,8 +112,7 @@ const updateGeeen = (sameCorrectLocation) => {
 const updateYellow = (sameButDifferentLocation) => {
   for (let i = 0; i < guessEl.length; i++) {
     if (sameButDifferentLocation.includes(i)) {
-      document.getElementById(guessEl[i].id).style.backgroundColor =
-        "rgb(255, 255, 0)";
+      document.getElementById(guessEl[i].id).style.backgroundColor = "rgb(255, 255, 0)";
     }
   }
 };
