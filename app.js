@@ -50,7 +50,7 @@ const handleClick = (event) => {
 
 const displayBoard=() =>{
      startingIndex = rowNumber * 5;
-    for (let i = 0; i < currentWord.length; i++) {              // Update the board array with 'new' currentWord
+    for (let i = 0; i < currentWord.length; i++) {              // Update/modifies the board array with 'new' currentWord characters at the specific starting index
       board[i + startingIndex] = currentWord[i];
     }
     // console.log(board)
@@ -117,7 +117,7 @@ const updateYellow = (sameButDifferentLocation) => {
   }
 };
 
-const updateBoard = () => {
+const updateBoard = () => {                                             //maps elements from board array to html elements in guessEL (reflects changes in board array in the UI elements)
   board.forEach((element, index) => {
     if (index < guessEl.length) {
       //restriction condition to prevent undefined guessEl.innertext
