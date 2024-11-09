@@ -1,4 +1,3 @@
-// console.time('label')
 /*-------------------------------- Constants --------------------------------*/
 const wordLength = 5;
 const maxAttempt = 6;
@@ -72,13 +71,15 @@ const handleEnterPress = () => {
   if (currentWord.length === 5) {
     if (targetWord !== currentWord) {
       getSameLetters(targetWord, currentWord); //compare target and current word function
-      updateGeeen(sameCorrectLocation); //arrays are passed to the fuctions 
+      updateGreen(sameCorrectLocation); //arrays are passed to the fuctions 
       updateYellow(sameButDifferentLocation); //arrays are passed to the fuctions 
       rowNumber += 1;
       attepmt += 1;
       currentWord = ""; //resets currentWord for new row
     } else {
-      winner = true;
+      getSameLetters(targetWord, currentWord); //compare target and current word function  
+      updateGreen(sameCorrectLocation); 
+      winner = true; 
     }
     // console.log(`board array: ${board}`)
   }
@@ -109,7 +110,7 @@ const getSameLetters = (targetWord, currentWord) => {           //this function 
   console.log(`correct letter correct location: ${sameCorrectLocation}`); //array is okay
 };
 
-const updateGeeen = (sameCorrectLocation) => {
+const updateGreen = (sameCorrectLocation) => {
   for (let i = 0; i < guessEl.length; i++) {
     if (sameCorrectLocation.includes(i)) {
       document.getElementById(guessEl[i].id).style.backgroundColor = "rgb(144, 238, 144)";
@@ -153,4 +154,3 @@ guessEl.forEach((guess) => {
   });
 });
 
-// console.timeEnd('label');
